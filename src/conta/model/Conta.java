@@ -2,7 +2,7 @@ package conta.model;
 
 public class Conta {
 	
-	private int numero;
+	protected int numero;
 	private int agencia;
 	private int tipo;
 	private String titular;
