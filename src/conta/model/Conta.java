@@ -1,6 +1,6 @@
 package conta.model;
 
-public class Conta {
+public abstract class Conta {
 	
 	protected int numero;
 	private int agencia;
@@ -59,17 +59,21 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
-	public boolean sacar(float valor) {
-		if(this.saldo < valor)
-			return false;
+	public boolean sacar(float valor) { 
 		
-		this.setSaldo(this.saldo - valor);
+		if(this.getSaldo() < valor) {
+			System.out.println("\n Saldo Insuficiente!");
+			return false;
+		}
+			
+		this.setSaldo(this.getSaldo() - valor);
 		return true;
 	}
 	
 	public void depositar(float valor) {
-		
-		this.setSaldo(this.saldo + valor);
+
+		this.setSaldo(this.getSaldo() + valor);
+
 	}
 	
 	
