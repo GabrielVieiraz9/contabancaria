@@ -1,6 +1,8 @@
 package conta.model;
 
-public class ContaCorrente extends Conta {
+import conta.repository.ContaRepository;
+
+public class ContaCorrente extends Conta implements ContaRepository {
 	private float limite;
 	
 	public ContaCorrente(int numero, int agencia, int tipo, String titular, float saldo, float limite) { //todas as variáveis devem estar inclusas, incluindo as da classe mae e classe filho
@@ -35,6 +37,55 @@ public class ContaCorrente extends Conta {
 		super.visualizar();
 		System.out.println("Limite de Crédito: " + this.limite);
 	}
+
+	@Override
+	public void procurarPorNumero(int numero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarTodas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cadastrar(Conta conta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizar(Conta conta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletar(int numero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sacar(int numero, float valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void depositar(int numero, float valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	
