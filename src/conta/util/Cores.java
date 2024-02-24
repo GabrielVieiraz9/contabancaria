@@ -64,6 +64,7 @@ public class Cores {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+	public static final String ANSI_GRAY_BACKGROUND = "\u001B[100m";
 			
 	// Background Color High Intensity
 	public static final String ANSI_BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
