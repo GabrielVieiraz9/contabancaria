@@ -19,9 +19,9 @@ public class Menu {
 			
 		ContaController contas = new ContaController();
 		
-		int numero, agencia, tipo, aniversario;
+		int numero, agencia, tipo, aniversario, numeroDestino;
 		String titular, opcao = "0";
-		float saldo, limite;
+		float saldo, limite, valor;
 		boolean loopMenu = true;
 		
 		ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 100.0f);
@@ -212,6 +212,30 @@ public class Menu {
 				
 			case "6": //arrumar a lógica de erro corretamente!
 				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+				
+			    int numeroConta = 0;
+
+			    do {
+			        System.out.println("Digite o Numero da conta: ");
+			        numeroConta = leia.nextInt();
+			        leia.nextLine(); // Consumir a nova linha pendente
+			        
+			        // Verifica se o número da conta é válido
+			        if (!contas.numeroContaValido(numeroConta)) {
+			            System.out.println("Número de conta inválido. Por favor, tente novamente.");
+			        }
+			    } while (!contas.numeroContaValido(numeroConta)); // Repete até que o número da conta seja válido
+
+			    
+			    do {
+			    	
+			        System.out.println("Digite o Valor do Saque (R$): ");
+			        valor = leia.nextFloat();
+			        leia.nextLine(); // Consumir a nova linha pendente
+			        
+			    } while (valor <= 0);
+
+			    contas.sacar(numeroConta, valor);
 
 			    System.out.println("Deseja continuar? (S/N) ");
 			    loopMenu = continueMenu(leia.nextLine());
@@ -221,6 +245,29 @@ public class Menu {
 			case "7":
 				System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
 
+			    do {
+			        System.out.println("Digite o Numero da conta: ");
+			        numeroConta = leia.nextInt();
+			        leia.nextLine(); // Consumir a nova linha pendente
+			        
+			        // Verifica se o número da conta é válido
+			        if (!contas.numeroContaValido(numeroConta)) {
+			            System.out.println("Número de conta inválido. Por favor, tente novamente.");
+			        }
+			    } while (!contas.numeroContaValido(numeroConta)); // Repete até que o número da conta seja válido
+
+
+			    do {
+			        System.out.println("Digite o Valor do Depósito (R$): ");
+			        valor = leia.nextFloat();
+			        leia.nextLine(); // Consumir a nova linha pendente
+			        if (valor <= 0) {
+			            System.out.println("Valor de depósito inválido. O valor deve ser maior que zero.");
+			        }
+			    } while (valor <= 0); // Repete até que o valor seja válido
+
+			    contas.depositar(numeroConta, valor);
+
 			    System.out.println("Deseja continuar? (S/N) ");
 			    loopMenu = continueMenu(leia.nextLine());
 				
@@ -228,6 +275,24 @@ public class Menu {
 				
 			case "8":
 				System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+				
+				System.out.println("Digite o Número da Conta de Origem: ");
+				numero = leia.nextInt();
+				leia.nextLine();
+				
+				System.out.println("Digite o Número da Conta de Destino: ");
+				numeroDestino = leia.nextInt();
+				leia.nextLine();
+				
+				do {
+					
+					System.out.println("Digite o valor da Transferência (R$): ");
+					valor = leia.nextFloat();
+					leia.nextLine();
+					
+				} while(valor <= 0);
+				
+				contas.transferir(numero,  numeroDestino,  valor);
 				
 				System.out.println("Deseja continuar? (S/N) ");
 				loopMenu = continueMenu(leia.nextLine());
